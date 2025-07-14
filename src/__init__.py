@@ -19,3 +19,4 @@ __version__ = "v0.0.1.dev0"
 from src.corpus import WordCorpus
 from src.abstract import LetterBoxes
 from src.model import LetterBoxedModel
+from src.scraper import ScrapeLetterBox
