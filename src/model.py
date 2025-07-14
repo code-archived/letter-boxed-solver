@@ -13,7 +13,7 @@ class LetterBoxedModel:
         """
 
         self.boxes = boxes
-        self.words = self.__subset_words__(words)
+        self.words = sorted(self.__subset_words__(words))
 
 
     def __subset_words__(self, words : list[str]) -> list[str]:
