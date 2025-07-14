@@ -12,10 +12,21 @@ from nltk.corpus import words
 
 class WordCorpus:
     def __init__(
-        self, filepath : str = os.path.abspath(os.path.join(
+        self,
+        filepath : str = os.path.abspath(os.path.join(
             os.path.dirname(__file__), "..", "assets", "words.txt"
         ))
     ) -> None:
+        """
+        Initialize the Word Corpus from a File
+
+        The initialization consider the static file from the
+        ``assets`` directory (in the project root) and returns a
+        list of valid words. In addition, a utility function is
+        provided to update the corpus file using the ``nltk``
+        corpus.
+        """
+
         self.filepath = filepath
 
 
@@ -39,7 +50,19 @@ class WordCorpus:
         ]
 
 
-    def update(self, normalize : bool = True) -> None:
+    def update(self, normalize : bool = True) -> bool:
+        """
+        Update the Word Corpus File using ``nltk.corpus`` Module
+
+        The update method directly overwrites the file with the
+        words from the ``nltk.corpus`` module.
+
+        :type  normalize: bool
+        :param normalize: Normalize the words by setting all uppercase
+            for words, such that it is easier to search and form a
+            word from the valid letters.
+        """
+
         nltk.download("words", quiet = True)
         corpus = words.words() # nltk corpus, not the file
 
