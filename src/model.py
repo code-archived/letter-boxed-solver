@@ -62,9 +62,12 @@ class LetterBoxedModel:
         Return a Pre-Index Dictionary of Words by the First Letter
         """
 
-        return defaultdict(list, {
-            word[0] : word for word in self.words
-        })
+        indexed = defaultdict(list)
+
+        for word in self.words:
+            indexed[word[0]].append(word)
+
+        return indexed
 
 
     def solve(self, nwords : int) -> list[str]:
