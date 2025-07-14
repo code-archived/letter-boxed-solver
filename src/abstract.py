@@ -27,3 +27,8 @@ class LetterBoxes(BaseModel):
         assert len(set(value)) == 3, "Each box must contain 3 unique letters."
 
         return value
+
+
+    @property
+    def letters(self) -> list[str]:
+        return self.L + self.R + self.T + self.B
