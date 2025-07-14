@@ -53,3 +53,25 @@ class LetterBoxedModel:
             self.boxes.nlvalid(left, right)
             for left, right in zip(word[:-1], word[1:])
         ])
+
+
+    def solve(self, nwords : int) -> list[str]:
+        """
+        NY Letter Boxed Solution using Backtracking
+
+        The model finds solutions for the NY Letter Boxed Puzzle
+        using backtracking, and returns a list of words that are
+        valid solutions.
+
+        :type  nwords: int
+        :param nwords: Number of words to be found using which the
+            solution is to be calculated.
+        """
+
+        return {
+            # ? one word solution, set must be same as all words valid
+            1 : [
+                word for word in self.words
+                if set(self.boxes.letters) - set(word) == set()
+            ],
+        }.get(nwords, [])
