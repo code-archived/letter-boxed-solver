@@ -4,6 +4,7 @@
 Model for the Letter Boxed Puzzle Solver
 """
 
+from collections import defaultdict
 from src.abstract import LetterBoxes
 
 class LetterBoxedModel:
@@ -53,6 +54,17 @@ class LetterBoxedModel:
             self.boxes.nlvalid(left, right)
             for left, right in zip(word[:-1], word[1:])
         ])
+
+
+    @property
+    def indexed(self) -> dict[str, list[str]]:
+        """
+        Return a Pre-Index Dictionary of Words by the First Letter
+        """
+
+        return defaultdict(list, {
+            word[0] : word for word in self.words
+        })
 
 
     def solve(self, nwords : int) -> list[str]:
