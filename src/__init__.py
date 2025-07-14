@@ -17,6 +17,5 @@ __version__ = "v0.0.1.dev0"
 
 # init-time options registrations
 from src.corpus import WordCorpus
-from src.model import LetterBoxes
-
-from src.abstract import LetterBoxedModel
+from src.abstract import LetterBoxes
+from src.model import LetterBoxedModel
