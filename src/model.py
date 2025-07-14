@@ -4,7 +4,9 @@
 Model for the Letter Boxed Puzzle Solver
 """
 
+from tqdm.auto import tqdm as TQ
 from collections import defaultdict
+
 from src.abstract import LetterBoxes
 
 class LetterBoxedModel:
@@ -70,6 +72,42 @@ class LetterBoxedModel:
         return indexed
 
 
+    def oneword(self) -> list[list[str]]:
+        """
+        Return the Rarest One-Word Solution from the Corpus
+        """
+
+        return [
+            word for word in TQ(self.words)
+            if not self.indexed.get(word[-1], [])
+        ]
+
+
+    def twoword(self) -> list[list[str]]:
+        """
+        Return the Solutions containing Two Words from the Corpus
+        """
+
+        return [
+            [word, nword] for word in TQ(self.words)
+            for nword in self.indexed.get(word[-1], [])
+            if set(self.boxes.letters) - set(word + nword) == set()
+        ]
+
+
+    def threeword(self) -> list[list[str]]:
+        """
+        Return the Solutions containing Two Words from the Corpus
+        """
+
+        return [
+            [word, nword, nnword] for word in TQ(self.words)
+            for nword in self.indexed.get(word[-1], [])
+            for nnword in self.indexed.get(nword[-1], [])
+            if set(self.boxes.letters) - set(word + nword + nnword) == set()
+        ]
+
+
     def solve(self, nwords : int) -> list[str]:
         """
         NY Letter Boxed Solution using Backtracking
@@ -84,9 +122,7 @@ class LetterBoxedModel:
         """
 
         return {
-            # ? one word solution, set must be same as all words valid
-            1 : [
-                word for word in self.words
-                if set(self.boxes.letters) - set(word) == set()
-            ],
-        }.get(nwords, [])
+            1 : self.oneword,
+            2 : self.twoword,
+            3 : self.threeword, # ! very slow, 3 mins.+ awaiting
+        }.get(nwords, lambda : None)()
