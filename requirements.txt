@@ -1,0 +1,7 @@
+beautifulsoup4==4.13.4
+fastapi==0.116.1
+nltk==3.9.1
+requests==2.32.4
+tqdm==4.67.1
+urllib3==2.5.0
+uvicorn==0.35.0
