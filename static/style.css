@@ -1,0 +1,78 @@
+body {
+  margin: 0;
+  font-family: Georgia, serif;
+  background: #fff;
+  color: #000;
+}
+.container {
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+}
+.column {
+  flex: 1;
+  padding: 20px;
+}
+.left-col {
+  border-right: 1px solid #ccc;
+  max-width: 400px;
+}
+.right-col {
+  flex: 2;
+}
+h1,
+h2 {
+  text-align: center;
+}
+.puzzle-box {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  margin: 20px auto;
+  border: 2px solid #333;
+}
+.puzzle-box .side {
+  position: absolute;
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+/* Top side (three letters centered at top edge) */
+.puzzle-box .top {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+/* Bottom side */
+.puzzle-box .bottom {
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+/* Left side (vertical arrangement) */
+.puzzle-box .left {
+  left: 0;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(-90deg);
+}
+/* Right side (vertical, rotate the opposite way) */
+.puzzle-box .right {
+  right: 0;
+  top: 50%;
+  transform: translate(50%, -50%) rotate(90deg);
+}
+/* Controls and solution output */
+.controls {
+  text-align: center;
+  margin-top: 20px;
+}
+.controls button {
+  margin-left: 10px;
+  padding: 5px 10px;
+  font-size: 1em;
+}
+#solution-output {
+  margin-top: 20px;
+  font-size: 1.2em;
+  line-height: 1.5;
+}
