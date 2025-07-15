@@ -51,15 +51,17 @@ h2 {
 }
 /* Left side (vertical arrangement) */
 .puzzle-box .left {
-  left: 0;
+  left: 10px;  /* bring it 10px inside from the left edge */
   top: 50%;
-  transform: translate(-50%, -50%) rotate(-90deg);
+  transform: translateY(-50%) rotate(-90deg);
+  transform-origin: left center;
 }
 /* Right side (vertical, rotate the opposite way) */
 .puzzle-box .right {
-  right: 0;
+  right: 10px;  /* bring it 10px inside from the right edge */
   top: 50%;
-  transform: translate(50%, -50%) rotate(90deg);
+  transform: translateY(-50%) rotate(90deg);
+  transform-origin: right center;
 }
 /* Controls and solution output */
 .controls {
