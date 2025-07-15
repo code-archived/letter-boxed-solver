@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>NYT Letter Boxed Solver</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Left column: Puzzle and controls -->
+      <div class="column left-col">
+        <h1>Letter Boxed Puzzle</h1>
+        <div class="puzzle-box">
+          <div class="side top" id="side-top"></div>
+          <div class="side right" id="side-right"></div>
+          <div class="side bottom" id="side-bottom"></div>
+          <div class="side left" id="side-left"></div>
+        </div>
+        <div class="controls">
+          <label><input type="radio" name="wordcount" value="1" /> 1-word</label>
+          <label><input type="radio" name="wordcount" value="2" checked /> 2-word</label>
+          <label><input type="radio" name="wordcount" value="3" /> 3-word</label>
+          <button id="generate-btn">Generate Solution</button>
+        </div>
+      </div>
+
+      <!-- Right column: Solutions output -->
+      <div class="column right-col">
+        <h2>Solution</h2>
+        <div id="solution-output">
+          <!-- Solutions will be injected here -->
+        </div>
+      </div>
+    </div>
+
+    <script src="/static/script.js"></script>
+  </body>
+</html>
