@@ -36,20 +36,12 @@ def get_puzzle():
     return JSONResponse(content = scrapper.getjson())
 
 @app.get("/api/solve")
-def solve_puzzle(words: int = 2):
-    """
-    words: number of words in solution (1,2, or 3).
-    This function should implement the Letter Boxed solving logic. 
-    Here, we'll mock it with a placeholder.
-    """
-    # In a real solver, fetch all valid words, build graph, find paths, etc.
-    # For demonstration, we return a dummy solution.
-    solutions = []
-    # Example: pretend we found these solutions for 2-word request
-    if words == 2:
-        solutions = ["JUICES SQUAWKING"]
-    elif words == 3:
-        solutions = ["A WORD", "ANOTHER WAY"]
-    elif words == 1:
-        solutions = []  # likely no single-word solution
-    return JSONResponse(content={"solutions": solutions})
+def solve_puzzle(words: int = 2) -> dict:
+    model = lbsolver.LetterBoxedModel(
+        boxes = scrapper.sides,
+        words = scrapper.corpus
+    )
+
+    return JSONResponse(content = {
+        "solutions" : model.solve(words)
+    })
