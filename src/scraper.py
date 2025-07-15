@@ -10,6 +10,7 @@ automatically, can be used to get the solution to the puzzle.
 import json
 import requests
 
+from datetime import date
 from bs4 import BeautifulSoup
 
 from src.abstract import LetterBoxes
@@ -59,3 +60,13 @@ class ScrapeLetterBox:
 
     def nysolution(self) -> list[str]:
         return self.data["ourSolution"]
+
+
+    def getjson(self, date : str = str(date.today())) -> dict:
+        return {
+            "date" : date,
+            "top" : self.sides.T,
+            "right" : self.sides.R,
+            "bottom" : self.sides.B,
+            "left" : self.sides.L
+        }
