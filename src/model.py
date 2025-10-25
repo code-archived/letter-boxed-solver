@@ -4,6 +4,8 @@
 Model for the Letter Boxed Puzzle Solver
 """
 
+import random
+
 from tqdm.auto import tqdm as TQ
 from collections import defaultdict
 
@@ -108,7 +110,7 @@ class LetterBoxedModel:
         ]
 
 
-    def solve(self, nwords : int) -> list[str]:
+    def solve(self, nwords : int, nsolutions : int = 17) -> list[str]:
         """
         NY Letter Boxed Solution using Backtracking
 
@@ -119,10 +121,17 @@ class LetterBoxedModel:
         :type  nwords: int
         :param nwords: Number of words to be found using which the
             solution is to be calculated.
+
+        :type  nsolutions: int
+        :param nsolutions: Number of solutions to be returned to the
+            user, defaults to 17 which best fits the front-end UI.
         """
 
-        return {
+        words = {
             1 : self.oneword,
             2 : self.twoword,
             3 : self.threeword, # ! very slow, 3 mins.+ awaiting
         }.get(nwords, lambda : None)()
+
+        nsolutions = min(len(words), nsolutions) if words else 0
+        return random.sample(words, nsolutions) if words else None
