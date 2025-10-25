@@ -1,80 +1,151 @@
+/* Base Styles */
+html,
 body {
   margin: 0;
+  padding: 0;
   font-family: Georgia, serif;
-  background: #fff;
   color: #000;
+  height: 100%;
+  overflow: hidden; /* Prevent scrolling */
 }
+
+/* Full-page flex layout */
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* Header, Main, Footer distribution */
+header,
+footer {
+  flex: 0 0 auto;
+}
+
+main {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Header */
+header {
+  text-align: center;
+  background: #f8f8f8;
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.tagline {
+  font-style: italic;
+  font-size: 0.9em;
+  color: #555;
+}
+
+/* Layout columns */
 .container {
   display: flex;
   flex-direction: row;
-  min-height: 100vh;
+  width: 100%;
+  height: 100%;
 }
+
 .column {
   flex: 1;
-  padding: 20px;
+  padding: 10px;
+  box-sizing: border-box;
 }
+
 .left-col {
   border-right: 1px solid #ccc;
-  max-width: 400px;
+  max-width: 380px;
 }
+
 .right-col {
   flex: 2;
+  padding: 10px 20px;
+  overflow-y: auto;
 }
-h1,
-h2 {
-  text-align: center;
-}
+
+/* Puzzle box */
 .puzzle-box {
   position: relative;
-  width: 300px;
-  height: 300px;
-  margin: 20px auto;
+  width: 220px;
+  height: 220px;
+  margin: 10px auto;
   border: 2px solid #333;
 }
+
 .puzzle-box .side {
   position: absolute;
   text-align: center;
-  font-size: 1.2em;
+  font-size: 1em;
   font-weight: bold;
 }
-/* Top side (three letters centered at top edge) */
+
+/* Position letters */
 .puzzle-box .top {
   top: 0;
   left: 50%;
   transform: translateX(-50%);
 }
-/* Bottom side */
 .puzzle-box .bottom {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
 }
-/* Left side (vertical arrangement) */
 .puzzle-box .left {
-  left: 10px;  /* bring it 10px inside from the left edge */
+  left: 10px;
   top: 50%;
   transform: translateY(-50%) rotate(-90deg);
   transform-origin: left center;
 }
-/* Right side (vertical, rotate the opposite way) */
 .puzzle-box .right {
-  right: 10px;  /* bring it 10px inside from the right edge */
+  right: 10px;
   top: 50%;
   transform: translateY(-50%) rotate(90deg);
   transform-origin: right center;
 }
-/* Controls and solution output */
+
+/* Controls */
 .controls {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 10px;
 }
+
 .controls button {
   margin-left: 10px;
   padding: 5px 10px;
   font-size: 1em;
 }
-#solution-output {
-  margin-top: 20px;
-  font-size: 1.2em;
-  line-height: 1.5;
+
+/* Footer */
+footer {
+  text-align: center;
+  background: #f4f4f4;
+  padding: 10px;
+  border-top: 1px solid #ccc;
+}
+
+.footer-content p {
+  font-size: 0.9em;
+  color: #333;
+  margin: 5px 0;
+}
+
+.social-links {
+  margin-top: 5px;
+}
+
+.social-links a {
+  margin: 0 8px;
+  color: #000;
+  font-size: 1.3em;
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: #0077b5;
 }

@@ -2,11 +2,26 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>NYT Letter Boxed Solver</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Free NYT Letter Boxed Solver — instantly find the best one-, two-, or three-word solutions for the New York Times Letter Boxed puzzle."
+    />
+    <meta name="keywords" content="NYT Letter Boxed solver, Letter Boxed solutions, New York Times puzzles, word puzzle solver, word game helper" />
+    <meta name="author" content="Debargha Pramanik" />
+    <title>NYT Letter Boxed Solver | Instant Puzzle Solutions</title>
+
     <link rel="stylesheet" href="/static/style.css" />
-    <!-- Favicon for the site itself -->
     <link rel="icon" href="/assets/webicon.png" type="image/png" />
-    <!-- Font Awesome for social icons -->
+
+    <!-- Open Graph for social sharing -->
+    <meta property="og:title" content="NYT Letter Boxed Solver" />
+    <meta property="og:description" content="Solve the NYT Letter Boxed puzzle instantly with this smart solver." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/assets/webicon.png" />
+    <meta property="og:url" content="https://zenithclown.github.io/" />
+
+    <!-- Font Awesome for icons -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -14,48 +29,64 @@
       referrerpolicy="no-referrer"
     />
   </head>
+
   <body>
-    <div class="container">
-      <!-- Left column: Puzzle and controls -->
-      <div class="column left-col">
-        <h1>Letter Boxed Puzzle</h1>
-        <div class="puzzle-box">
-          <div class="side top" id="side-top"></div>
-          <div class="side right" id="side-right"></div>
-          <div class="side bottom" id="side-bottom"></div>
-          <div class="side left" id="side-left"></div>
-        </div>
-        <div class="controls">
-          <label><input type="radio" name="wordcount" value="1" /> 1-word</label>
-          <label><input type="radio" name="wordcount" value="2" checked /> 2-word</label>
-          <label><input type="radio" name="wordcount" value="3" /> 3-word</label>
-          <button id="generate-btn">Generate Solution</button>
-        </div>
+    <div class="page-wrapper">
+      <header>
+        <h1>NYT Letter Boxed Solver</h1>
+        <p class="tagline">Instantly generate one-, two-, or three-word solutions for the New York Times Letter Boxed puzzle.</p>
+      </header>
 
-        <!-- Custom Links Section -->
-        <div class="links" style="padding-top: 20px" align="center">
-          <h2>Connect with Me</h2>
-          <a href="https://www.linkedin.com/in/dpramanik/" target="_blank" rel="noopener">
-            <i class="fab fa-linkedin" style="font-size: 30px; width: 30px; height: 30px; color: black"></i>
-          </a>
-          <a href="http://github.com/ZenithClown/" target="_blank" rel="noopener">
-            <i class="fab fa-github" style="font-size: 30px; width: 30px; height: 30px; color: black"></i>
-          </a>
-          <a href="https://zenithclown.github.io/" target="_blank" rel="noopener">
-            <i class="fas fa-globe" style="font-size: 30px; width: 30px; height: 30px; color: black"></i>
-          </a>
-        </div>
-      </div>
+      <main class="container">
+        <!-- Left column: Puzzle and controls -->
+        <section class="column left-col" aria-labelledby="puzzle-section">
+          <h2 id="puzzle-section" align="center">Letter Boxed Puzzle</h2>
+          <div class="puzzle-box" role="img" aria-label="Letter Boxed puzzle layout">
+            <div class="side top" id="side-top"></div>
+            <div class="side right" id="side-right"></div>
+            <div class="side bottom" id="side-bottom"></div>
+            <div class="side left" id="side-left"></div>
+          </div>
 
-      <!-- Right column: Solutions output -->
-      <div class="column right-col">
-        <h2>Solution(s)</h2>
-        <div id="solution-output">
-          <!-- Solutions will be injected here -->
+          <div class="controls">
+            <fieldset>
+              <legend>Select Word Count</legend>
+              <label> <input type="radio" name="wordcount" value="1" /> 1-word </label>
+              <label> <input type="radio" name="wordcount" value="2" checked /> 2-word </label>
+              <label> <input type="radio" name="wordcount" value="3" /> 3-word </label>
+            </fieldset><br>
+            <button id="generate-btn" aria-label="Generate solution">Generate Solution</button>
+          </div>
+        </section>
+
+        <!-- Right column: Solutions output -->
+        <section class="column right-col" aria-labelledby="solutions-section">
+          <h2 id="solutions-section">Solutions</h2>
+          <div id="solution-output" aria-live="polite">
+            <!-- Solutions will be injected here -->
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <div class="footer-content">
+          <p>
+            &copy; <span id="year"></span> NYT Letter Boxed Solver by
+            <a href="https://zenithclown.github.io/" target="_blank" rel="noopener"> Debargha Pramanik </a>.
+          </p>
+
+          <div class="social-links" aria-label="Social media links">
+            <a href="https://www.linkedin.com/in/dpramanik/" target="_blank" rel="noopener" aria-label="LinkedIn profile"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/ZenithClown/" target="_blank" rel="noopener" aria-label="GitHub profile"><i class="fab fa-github"></i></a>
+            <a href="https://zenithclown.github.io/" target="_blank" rel="noopener" aria-label="Personal website"><i class="fas fa-globe"></i></a>
+          </div>
         </div>
-      </div>
+      </footer>
     </div>
 
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
     <script src="/static/script.js"></script>
   </body>
 </html>
